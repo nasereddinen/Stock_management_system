@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="card-columns">
+       
+            {% for dis in distinations %}
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ dis.nom_dis }}</h4>
+                        
+                       
+                        {% for item in items %}
+                        {% if  dis.nom_dis == item.issue_to.nom_dis %}
+                            <p class="card-text">{{ item.issue_quantity }}</p>
+                            
+                        
+                        {% endif %}
+                        {% endfor %}
+                        <a href="#" class="btn btn-primary stretched-link">Learn More</a>
+                    </div>
+                </div>
+            {% endfor %}
+       
+    </div><!-- end div card columns -->
+</div>
+{% endblock %}

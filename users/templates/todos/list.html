@@ -50,9 +50,9 @@
     <thead>
         <tr>
           <th>todos</th>
-          
-       <th>actions</th>
+          <th>personne</th>
        <th>état</th>
+       <th>actions</th>
         </tr>
      </thead>
             <tbody>
@@ -61,12 +61,12 @@
     <tr>
 		   <td>
 			{% if task.complete == True %}
-			<strike>{{task.title}}</strike>
+		<span>{{task.title}}</span>
 			{% else %}
 			<span>{{task.title}}</span>
 			{% endif %}
             </td>
-           
+           <td>{{user.username}}</td>
             <td>
               {% if task.complete == True %}
               <a class="badge super-badge bg-success" href="{% url 'task_cross_off' task.id %}">complete</a>

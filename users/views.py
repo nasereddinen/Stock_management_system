@@ -290,7 +290,7 @@ def issue_items(request, pk):
             if alq.id_sous_famille.active == "oui" and  alq.quantity < alq.id_sous_famille.seuil:
                 email_from = settings.EMAIL_HOST_USER
                 try:
-                    send_mail("test", "manque de "+ alq.id_sous_famille.designation + "quantite" + str(alq.quantity),email_from,['nasreddine@tanis-tunisie.com'])
+                    send_mail("alert stock", "manque de "+ alq.id_sous_famille.designation + "quantite" + str(alq.quantity),email_from,['nasreddine@tanis-tunisie.com'])
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.') 
                    
@@ -520,6 +520,7 @@ def add_user(request):
                 user.save()
             return HttpResponseRedirect(reverse("users"))
     return render(request,"./PageUser/users_form.html",{"form":form})
+@login_required(login_url ='/login')
 def update_user(request,pk):
    
     use =User.objects.get(id=pk)
